@@ -21,12 +21,12 @@ public class DlxListener implements ChannelAwareMessageListener {
             System.out.println("处理业务逻辑...");
             //int i = 3/0;//出现错误
             //3. 手动签收
-            channel.basicAck(deliveryTag,true);
+            channel.basicAck(deliveryTag, true);
         } catch (Exception e) {
             //e.printStackTrace();
             System.out.println("出现异常，拒绝接受");
             //4.拒绝签收，不重回队列 requeue=false
-            channel.basicNack(deliveryTag,true,false);
+            channel.basicNack(deliveryTag, true, false);
         }
     }
 }

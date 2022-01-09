@@ -13,7 +13,7 @@
     <context:property-placeholder location="classpath:rabbitmq.properties"/>
 
     <!-- 定义rabbitmq connectionFactory -->
-    <rabbit:connection-factory id="connectionFactory" host="${rabbitmq.host}}"
+    <rabbit:connection-factory id="connectionFactory" host="${rabbitmq.host}"
                                port="${rabbitmq.port}"
                                username="${rabbitmq.username}"
                                password="${rabbitmq.password}"
@@ -59,7 +59,7 @@
     <rabbit:direct-exchange name="spring_direct_exchange">
         <rabbit:bindings>
             <!--direct 类型的交换机绑定队列  key ：路由key  queue：队列名称-->
-            <rabbit:binding queue="spring_direct_queue" key="info"></rabbit:binding>
+            <rabbit:binding queue="spring_direct_queue" key="info"/>
         </rabbit:bindings>
 
     </rabbit:direct-exchange>

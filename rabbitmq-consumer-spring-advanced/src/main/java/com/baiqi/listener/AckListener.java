@@ -18,25 +18,25 @@ public class AckListener implements ChannelAwareMessageListener {
 
         try {
 
-        //2、获取消息
-        System.out.println("message:"+new String(message.getBody()));
+            //2、获取消息
+            System.out.println("message:" + new String(message.getBody()));
 
-        //3、进行业务处理
-        System.out.println("=====进行业务处理====");
+            //3、进行业务处理
+            System.out.println("=====进行业务处理====");
 
-        //模拟出现异常
-        //int  i = 5/0;
+            //模拟出现异常
+            //int  i = 5/0;
 
-        //4、进行消息签收
-            //channel.basicAck(deliveryTag, false);
-            System.out.println("收到了消息:"+deliveryTag);
+            //4、进行消息签收
+            channel.basicAck(deliveryTag, false);
+            System.out.println("收到了消息:" + deliveryTag);
         } catch (Exception e) {
 
             //拒绝签收
              /*
             第三个参数：requeue：重回队列。如果设置为true，则消息重新回到queue，broker会重新发送该消息给消费端
              */
-           // channel.basicNack(deliveryTag, false, true);
+             channel.basicNack(deliveryTag, false, true);
 
         }
     }

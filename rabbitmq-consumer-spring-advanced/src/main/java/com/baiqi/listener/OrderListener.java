@@ -23,12 +23,12 @@ public class OrderListener implements ChannelAwareMessageListener {
             System.out.println("判断状态是否为支付成功");
             System.out.println("取消订单，回滚库存....");
             //3. 手动签收
-            channel.basicAck(deliveryTag,true);
+            channel.basicAck(deliveryTag, true);
         } catch (Exception e) {
             //e.printStackTrace();
             System.out.println("出现异常，拒绝接受");
             //4.拒绝签收，不重回队列 requeue=false
-            channel.basicNack(deliveryTag,true,false);
+            channel.basicNack(deliveryTag, true, false);
         }
     }
 }
